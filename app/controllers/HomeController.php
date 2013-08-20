@@ -58,10 +58,15 @@ public function login()
 			'password'=>Input::get('Password'));
 
 		if(Auth::attempt($user))
+<<<<<<< HEAD
 		{			
 			return Redirect::intended('Reservation');
 			
 
+=======
+		{
+			return View::make('Reservation.reservation');
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 		}
 
 		else

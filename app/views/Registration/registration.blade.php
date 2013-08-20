@@ -49,7 +49,11 @@
 	
 
 		<div class="control-group {{$errors->has('Street_Address') ? 'error':''}}">
+<<<<<<< HEAD
 			<label class="control-label">{{$errors->has('Street_Address') ? $errors->first('Street_Address','<p>:message</p>') : 'Street Address'}} </label>			
+=======
+			<label class="control-label">{{$errors->has('Street_Address') ? $errors->first('Street_Address','<p>:message</p>') : 'Last Name'}} </label>			
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 			<input  class="span2" type='text' name="Street_Address" value="{{Input::old('Street_Address')}}" placeholder="Street Address">
 
 		</div>

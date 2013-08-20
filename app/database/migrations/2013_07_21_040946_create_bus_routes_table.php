@@ -14,6 +14,7 @@ class CreateBusRoutesTable extends Migration {
 		//
 
 		Schema::create('bus_routes',function($table){
+<<<<<<< HEAD
 			$table->increments('route_id');
 			$table->integer('busid');			
 			$table->date('departure_date');
@@ -22,6 +23,13 @@ class CreateBusRoutesTable extends Migration {
 			$table->string('leaving_from');
 			$table->string('going_to');
 			$table->timestamps();
+=======
+			$table->integer('busid');
+			$table->date('day');
+			$table->timestamps();
+
+
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 		});
 	}
 

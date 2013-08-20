@@ -2021,8 +2021,11 @@ table {
 
 .table thead th {
   vertical-align: bottom;
+<<<<<<< HEAD
   background-color: #34495e;
   color: rgb(255,255,255);
+=======
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 }
 
 .table caption + thead tr:first-child th,

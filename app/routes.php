@@ -11,6 +11,7 @@
 |
 */
 
+<<<<<<< HEAD
 
 
 
@@ -59,6 +60,17 @@ Route::get('Reservation',function()
 		
 		return View::make('Reservation.reservation',array('Routes'=>$data,'Search'=>false));
 	});
+=======
+Route::get('/', function()
+{
+	return View::make('home.home');
+});
+
+Route::get('Reservation',function()
+{
+	return View::make('Reservation.reservation');
+});
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 
 Route::get('Registration',function(){
 
@@ -67,6 +79,7 @@ Route::get('Registration',function(){
 
 
 
+<<<<<<< HEAD
 Route::post('Routes/search',array('before'=>'csrf','uses'=>'ReservationController@postSearch'));
 Route::post('Routes/Reserve',array('before'=>'csrf','uses'=>'ReservationController@postReserve'));
 Route::post('Register',array('before'=>'csrf','uses'=>'HomeController@NewUser'));
@@ -111,3 +124,7 @@ Route::post('admin/login',function(){
 
 /*Addimg Bus*/
 Route::post('Admin/AddBus',array('before'=>'csrf','uses'=>'AdminController@postAddBus'));
+=======
+Route::post('Register',array('before'=>'csrf','uses'=>'HomeController@NewUser'));
+Route::post('login',array('before'=>'csrf','uses'=>'HomeController@login'));
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76

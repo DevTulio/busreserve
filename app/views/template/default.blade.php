@@ -2,11 +2,19 @@
 <head>
 
 	<title></title>
+<<<<<<< HEAD
 	{{HTML::style('assets/bootstrap/css/bootstrap.min.css')}}
 	{{HTML::style('assets/bootstrap/css/bootstrap-responsive.css')}}
 	{{HTML::style('assets/css/flat-ui.css')}}
 	{{HTML::style('assets/datepicker/css/datepicker.css')}}
 	{{HTML::style('assets/css/img.css')}}
+=======
+	{{HTML::style('assets/bootstrap/css/bootstrap.css')}}
+	{{HTML::style('assets/bootstrap/css/bootstrap-responsive.css')}}
+	{{HTML::style('assets/css/flat-ui.css')}}
+	{{HTML::style('assets/datepicker/css/datepicker.css')}}
+
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 
 </head>
 <body style="background:#BBC1C4;padding-top:27px">
@@ -85,9 +93,15 @@
 
 	</div>
 </div>
+<<<<<<< HEAD
 {{HTML::script('assets/js/jquery.js')}}
 {{HTML::script('assets/datepicker/js/datepicker.js')}}
 {{HTML::script('assets/datepicker/js/date.js')}}
 {{HTML::script('assets/js/bootstrap.min.js')}}
+=======
+{{HTML::script('assets/datepicker/js/jquery.js')}}
+{{HTML::script('assets/datepicker/js/datepicker.js')}}
+{{HTML::script('assets/datepicker/js/date.js')}}
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 </body>
 </html>

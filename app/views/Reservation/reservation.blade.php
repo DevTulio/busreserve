@@ -4,6 +4,7 @@
 
 
 <div class="row-fluid">
+<<<<<<< HEAD
 @if(Session::has('Search'))
 		@if(!$isFound)	
 			<div class="row-fluid">
@@ -151,6 +152,27 @@
 
 					{{Form::open(array('url'=>'login','class'=>'form-inline','method'=>'POST'))}}
 					{{Form::token()}}
+=======
+
+	<div class="span4">
+	
+			@if(Auth::check())
+				<div class="row-fluid">
+					<div class="control-label">
+					Search Date of Arrival
+					</div>
+				</div>
+				<div class="control-group">
+				
+					<div id="search" style="padding:15px"></div>
+
+				</div>
+
+			@else
+
+				{{Form::open(array('url'=>'login','class'=>'form-inline','method'=>'POST'))}}
+				{{Form::token()}}
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 					@if(Session::has('errormessage'))
 
 
@@ -166,9 +188,15 @@
 
 						<button class="btn btn-primary">Submit</button>
 						<a href="{{URL('Registration')}}">Not yet Registered?</a>
+<<<<<<< HEAD
 					{{Form::close()}}
 
 				@endif
+=======
+				
+					{{Form::close()}}
+			@endif
+>>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 
 			
 
