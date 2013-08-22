@@ -79,7 +79,48 @@ class ReservationController extends BaseController {
 		//
 	}
 
+	public function showReservation(){
+	$data=BusRoute::all();	
+
+
+	if(Session::has('Search')){
+		$dat=Session::get('test');
+		$isFound=true;
+		$id2;
+		$id=DB::table('buses')->join('bus_routes','bus_routes.busid','=','buses.busid')
+		->where('bus_routes.departure_date','=',$dat['searchDate'])
+		->where('bus_routes.going_to','=',$dat['searchGoingTo'])
+		->where('bus_routes.leaving_from','=',$dat['LeavingFrom'])	
+		->where('buses.status','=','WAITING')
+		->get();
+		
+				foreach ($id as $each) {
+					$id2=$each->busid;
+				
+				}
+
+				
+				if(count($id)<=0){
+				$isFound=false;
+				}
+				else{
+						$id=DB::table('buses')
+						->join('bus_routes','bus_routes.busid','=','buses.busid')
+						->where('buses.busid','=',$id2)
+						->get();			
+				}
+
+				
+
+
+	    return View::make('Reservation.reservation',array('Routes'=>$data,'Search'=>true,'results'=>$id,'isFound'=>$isFound));
+	}
+		
+		return View::make('Reservation.reservation',array('Routes'=>$data,'Search'=>false));
+	}
+
 	public function postSearch(){
+
 		$searchDate=Input::get('DepartureDate');
 		$searchGoingTo=Input::get('GoingTo');
 		$searchLeavingFrom=Input::get('LeavingFrom');
@@ -108,11 +149,16 @@ class ReservationController extends BaseController {
 				$BusReserve->user_id=Auth::user()->user_id;
 				$BusReserve->status="RESERVED";
 				$BusReserve->save();
-
-
-				
-
 			}
+
+			$seatCapacity=DB::table('buses')->where('busid','=',$busid)->first();
+				if($seatCapacity->availableseats==0){
+					DB::table('buses')->where('busid',$busid)->update(array('status'=>'CLOSED'));
+				}
+				elseif($seatCapacity->availableseats>0){
+					DB::table('buses')->where('busid',$busid)->update(array('availableseats'=>$seatCapacity->availableseats-1));
+				}
+			
 		}
 
 }

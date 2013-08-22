@@ -11,20 +11,18 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
-<<<<<<< HEAD
+
 	protected $primaryKey = 'user_id';
-=======
->>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
+
 	protected $fillable=array('Email',
 								'First_Name',
 								'Last_Name',
 								'Password',
 								'Phone_Number',
 								'Mailing_Address',
-<<<<<<< HEAD
+
 								'Account_type',
-=======
->>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
+
 								'Street_Address');
 
 									/**

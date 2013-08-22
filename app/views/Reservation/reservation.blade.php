@@ -4,7 +4,7 @@
 
 
 <div class="row-fluid">
-<<<<<<< HEAD
+
 @if(Session::has('Search'))
 		@if(!$isFound)	
 			<div class="row-fluid">
@@ -15,8 +15,8 @@
 		@endif
 @endif
 	<div class="span12">
-	
-		
+
+
 
 				@if(Auth::check())
 					 	{{Form::open(array('url'=>URL::to('Routes/search'),'class'=>'form-inline','method'=>'POST'))}}
@@ -34,13 +34,13 @@
 						<div class="row-fluid">
 							<div class="control-group" style="padding:12px">
 								<div class="span4">
-									
+
 									<select name="LeavingFrom">
 											@foreach($Routes as $route)
 												<option>{{$route->leaving_from}}</option>
 											@endforeach							
-											
-											
+
+
 									</select>								
 								</div>							
 							</div>
@@ -77,11 +77,11 @@
 				              </thead>
 				              <tbody>
 
-				              			
+				              	
 				             		@foreach($results as $result)
-				             			
-				             		
-				             		               	
+				             	{{--*/$seatCount=1/*--}}
+
+
 				                <tr>
 				                  <td>{{$result->bustype}}</td>
 				                  <td>{{$result->departure_time}}</td>
@@ -100,32 +100,41 @@
 					            </div>
 					            <div class="modal-body">
 					              <h4>Choose Seats</h4>
-					            
+
 				                         {{Form::open(array('url'=>URL::to('Routes/Reserve'),'class'=>'form-inline','method'=>'POST'))}}
 		                  				 {{Form::token()}}
 		                  				 <input type="hidden" name="busid" value="{{$result->busid}}">
 
 		                  		 @foreach(DB::table('seats')->where('busid','=',$result->busid)->get() as $each)
-		                   			{{--*/$a=count(DB::table('seats')->where('busid','=',$result->busid)->get());/*--}}
+		                   			
 										@if(count(DB::table('bus_reservations')->where('seatno','=',$each->seatno)->get())<=0)
-					         
+
 					       			 <input type="checkbox"  style="padding:10px" name="seats[]" value="{{$each->seatno}}">&nbsp;<img class="available"></img>
-					        
-					              	 @else
+
+					              	  @else
 					              	 		@foreach(DB::table('bus_reservations')->where('seatno','=',$each->seatno)->get() as $each2)
 					                    @if($each2->status=='RESERVED'||$each2->status=='PAID')
 					        		 <input type="checkbox"  style="padding:10px" disabled="" value="{{$each->seatno}}">&nbsp;</img><img class="booked"></img>
 					              	 	@endif
 					              	 		@endforeach
+					              	   @endif
+
+					              	 @if($seatCount%10==0)
+					              	 		<br>
+					              	 			@if($seatCount%20==0)
+					              	 				<br><br>
+					              	 			@endif
 					              	 @endif
+					                	{{--*/$seatCount++/*--}}
+					              	 
 					              @endforeach
 					              <div class="row-fluid">
 					             <br><br>
 					              	<button class="btn btn-primary">Submit<button>
 					              </div>
 					              {{Form::close()}}
-					   
-					              
+
+
 					            <div class="modal-footer">
 					              <button class="btn" data-dismiss="modal">Close</button>
 					              <button class="btn btn-primary">Save changes</button>
@@ -134,71 +143,66 @@
 				                  </td>
 				                </tr>
 				         		   @endforeach
-				            
 
 
-				               
+
+
 				              </tbody>
 				            </table>
 
-				           
-				            
-				           
+
+
+
 
 						@endif
-						
+
 
 				@elseif(!(Auth::check()))
 
 					{{Form::open(array('url'=>'login','class'=>'form-inline','method'=>'POST'))}}
 					{{Form::token()}}
-=======
 
-	<div class="span4">
-	
-			@if(Auth::check())
-				<div class="row-fluid">
-					<div class="control-label">
-					Search Date of Arrival
-					</div>
-				</div>
-				<div class="control-group">
-				
-					<div id="search" style="padding:15px"></div>
+					@if(Session::has('AccountNotFound'))
 
-				</div>
-
-			@else
-
-				{{Form::open(array('url'=>'login','class'=>'form-inline','method'=>'POST'))}}
-				{{Form::token()}}
->>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
-					@if(Session::has('errormessage'))
-
+						<div class="alert alert-error">
+								<button  type="button" class="close" data-dismiss="alert">&times;</button>
+									{{Session::get('AccountNotFound')}}
+						</div>	
 
 					@endif
+						<div class="span5">
+								@if($errors->has('Email'))
+								<div class="alert alert-error">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+									{{$errors->has('Email')? $errors->first('Email','<p>:message</p>') : 'Email'}}
+								</div>
+								@endif
+
+								@if($errors->has('password'))
+								<div class="alert alert-error">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+									{{$errors->has('password')? $errors->first('password','<p>:message</p>') : 'Email'}}
+								</div>
+								@endif
+
 						<label class="control-label">Email</label>
-						<div class="control-group">
+						<div class="control-group {{$errors->has('Email')? 'error':''}}">
 							<input type="text" value="{{Input::old('Email')}}" placeholder="Email"  name="Email">				
 						</div>
 						<label class="control-label">Password</label>
-						<div class="control-group">
+						<div class="control-group {{$errors->has('password')? 'error': ''}}">
 							<input type="password" placeholder="Password" name="Password">				
 						</div>
 
 						<button class="btn btn-primary">Submit</button>
 						<a href="{{URL('Registration')}}">Not yet Registered?</a>
-<<<<<<< HEAD
+
+						</div>
+
 					{{Form::close()}}
 
 				@endif
-=======
-				
-					{{Form::close()}}
-			@endif
->>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
 
-			
 
 	</div>
 

@@ -11,7 +11,7 @@
 |
 */
 
-<<<<<<< HEAD
+
 
 
 
@@ -21,56 +21,15 @@ Route::get('/', function()
 
 });
 
-Route::get('Reservation',function()
-{	$data=BusRoute::all();	
+Route::get('Reservation',array('uses'=>'ReservationController@showReservation'));
 
-	if(Session::has('Search')){
-		$dat=Session::get('test');
-		$isFound=true;
-		$id2;
-		$id=BusRoute::where('departure_date','=',$dat['searchDate'])
-		->where('going_to','=',$dat['searchGoingTo'])
-		->where('leaving_from','=',$dat['LeavingFrom'])
-		->get();
-
-       //$id2=Bus::find();
-		foreach ($id as $each) {
-			$id2=$each->busid;
-		
-		}
-
-				
-		if($id->count()<=0){
-		$isFound=false;
-		}
-		else{
-				$id=DB::table('buses')
-				->join('bus_routes','bus_routes.busid','=','buses.busid')
-				->where('buses.busid','=',$id2)
-				->get();
-				
-
-		}
-
-				
-
-
-	    return View::make('Reservation.reservation',array('Routes'=>$data,'Search'=>true,'results'=>$id,'isFound'=>$isFound));
-	}
-		
-		return View::make('Reservation.reservation',array('Routes'=>$data,'Search'=>false));
-	});
-=======
 Route::get('/', function()
 {
 	return View::make('home.home');
 });
 
-Route::get('Reservation',function()
-{
-	return View::make('Reservation.reservation');
-});
->>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
+
+
 
 Route::get('Registration',function(){
 
@@ -79,7 +38,7 @@ Route::get('Registration',function(){
 
 
 
-<<<<<<< HEAD
+
 Route::post('Routes/search',array('before'=>'csrf','uses'=>'ReservationController@postSearch'));
 Route::post('Routes/Reserve',array('before'=>'csrf','uses'=>'ReservationController@postReserve'));
 Route::post('Register',array('before'=>'csrf','uses'=>'HomeController@NewUser'));
@@ -124,7 +83,7 @@ Route::post('admin/login',function(){
 
 /*Addimg Bus*/
 Route::post('Admin/AddBus',array('before'=>'csrf','uses'=>'AdminController@postAddBus'));
-=======
+
 Route::post('Register',array('before'=>'csrf','uses'=>'HomeController@NewUser'));
 Route::post('login',array('before'=>'csrf','uses'=>'HomeController@login'));
->>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
+

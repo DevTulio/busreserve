@@ -1,4 +1,4 @@
-@extends('template.default')
+@extends('template.homedeafault')
 
 @section('content')
 

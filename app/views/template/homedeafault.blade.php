@@ -8,10 +8,12 @@
 	{{HTML::style('assets/css/flat-ui.css')}}
 	{{HTML::style('assets/datepicker/css/datepicker.css')}}
 	{{HTML::style('assets/css/img.css')}}
+	{{HTML::style('assets/css/mystyle.css')}}
+
 
 
 </head>
-<body style="background:#BBC1C4;padding-top:27px">
+<body class="background">
 
 	<div class="row-fluid">
 		<div class="navbar navbar-inverse navbar-fixed-top">
@@ -51,18 +53,12 @@
 	<div class="row-fluid">
 		<div class="container-fluid">
 			
-			<div class="span3">
-				<div class="well">
-
-				</div>
-			</div>
-					
-			<div class="span9">
-				<div class="well">
+							
+		
 
 							@yield('content')
 						
-				</div>
+				
 			</div>
 
 				
@@ -90,8 +86,8 @@
 
 {{HTML::script('assets/js/jquery.js')}}
 {{HTML::script('assets/datepicker/js/datepicker.js')}}
-{{HTML::script('assets/datepicker/js/date.js')}}
 {{HTML::script('assets/js/bootstrap.min.js')}}
+{{HTML::script('assets/retina/retina.js')}}
 
 </body>
 </html>

@@ -53,26 +53,24 @@ class HomeController extends BaseController {
 
 public function login()
 {
+		$rules=array('Email'=>'required|Email','password'=>'required');
 
 		$user=array('Email'=>Input::get('Email'),
 			'password'=>Input::get('Password'));
 
-		if(Auth::attempt($user))
-<<<<<<< HEAD
-		{			
-			return Redirect::intended('Reservation');
+		$validation=Validator::make($user,$rules);
+	
+		if($validation->fails()){
 			
-
-=======
-		{
-			return View::make('Reservation.reservation');
->>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
+				return Redirect::back()->withErrors($validation);
 		}
 
-		else
-		{
-			return Redirect::back()->withInput();
-		}
+		if(Auth::attempt($user)){			
+			return Redirect::intended('Reservation');
+		}	
+
+			return Redirect::back()->withInput()->wth(array('AccountNotFound','Account Not Found'));
+	
 }
 
 public function logout()

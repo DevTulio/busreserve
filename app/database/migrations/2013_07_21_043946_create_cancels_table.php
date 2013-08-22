@@ -12,9 +12,10 @@ class CreateCancelsTable extends Migration {
 	public function up()
 	{
 		Schema::create('cancels',function($table){
-<<<<<<< HEAD
+
 		$table->increments('cancelid');
 		$table->integer('busid');
+		$table->integer('user_id');
 		$table->datetime('time');
 		$table->string('seatno');
 		$table->integer('ticketno');
@@ -23,15 +24,10 @@ class CreateCancelsTable extends Migration {
 
 		});
 
-=======
-		$table->integer('ticketno');
-		$table->datetime('time');
-		$table->integer('noofseats');
-		$table->float('refamount');
 
 
 		});
->>>>>>> 68e73d9c135d506b4132806aa724a99149109e76
+
 	}
 
 	/**
