@@ -18,7 +18,7 @@ class CreateBusesTable extends Migration {
 			$table->string('bustype');
 			$table->integer('capacity');
 			$table->integer('availableseats');		
-			$table->enum('status',array('FULL','ONROAD','WAITING','ONBOARD'));//onroad or waiting
+			$table->enum('status',array('CLOSED','ONROAD','WAITING','ONBOARD'));//onroad or waiting
 			$table->string('busplate_no');
 			$table->timestamps();
 

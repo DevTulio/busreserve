@@ -11,9 +11,12 @@
 |
 */
 
+    $facebook = new Facebook(array(
+        'appId' => Config::get('facebook.appId'),
+        'secret' => Config::get('facebook.secret')
+    ));
 
-
-
+       dd($facebook);
 
 Route::get('/', function()
 {
